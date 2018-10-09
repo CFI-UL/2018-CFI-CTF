@@ -14,6 +14,8 @@ Source code files and writeups of the **2018 CFI CTF**'s challenges.
 
 ## Challenges by category
 
+### Note : Crypto challenges will be available Friday Oct 12
+
 - Programming
   - [Maths](./maths/)
   - [Guess the Number](./guess_the_number/)
