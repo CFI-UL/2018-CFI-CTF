@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "863748069969",
+    "firebase_url": "https://cfi-event.firebaseio.com",
+    "project_id": "cfi-event",
+    "storage_bucket": "cfi-event.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:863748069969:android:1329eb2ac460e226",
+        "android_client_info": {
+          "package_name": "com.sagold.cfievent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "863748069969-b7d0spv2gm57u45e99rg90lgc2klmhbq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxqGP3iBzGKPI5UDOsIIqmAFLR_Y_wXew"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

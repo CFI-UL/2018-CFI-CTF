@@ -1,0 +1,9 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+     - "50500:80"
+    volumes:
+     - ./src:/usr/local/apache2/htdocs/
+     - ./cgi-bin:/usr/local/apache2/cgi-bin/

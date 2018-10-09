@@ -1,0 +1,14 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+     - "17000:80"
+    volumes:
+     - ./src:/var/www/html
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 10.133.11.0/24

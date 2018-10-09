@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  server:
+    build: .
+    ports:
+      - "24002:5000"
+    restart: "always"

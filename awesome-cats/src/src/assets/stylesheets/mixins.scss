@@ -1,0 +1,23 @@
+@import 'constants';
+
+@mixin base-font() {
+  font-family: 'Roboto', sans-serif;
+  line-height: normal;
+}
+
+@mixin titleize() {
+  @include base-font;
+  text-transform: uppercase;
+  letter-spacing: .05em;;
+}
+
+@mixin linkify($color: $primary-color) {
+  text-decoration: none;
+  color: $color;
+
+  &:active,
+  &:visited,
+  &:hover {
+    color: $color;
+  }
+}

@@ -1,0 +1,258 @@
+@import 'constants';
+@import 'mixins';
+
+// Variables
+$header-height: 6 * $h-space;
+
+// Basic elements.
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  @include base-font;
+}
+
+p {
+  font-weight: lighter;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include titleize;
+  margin: $h-space 0;
+  font-weight: 500;
+}
+
+// Utils classes.
+.link {
+  @include linkify($primary-color);
+}
+
+.link-secondary {
+  @include linkify($secondary-color);
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: ($v-space/2);
+  padding-left: ($v-space/2);
+  width: 100%;
+}
+
+// @media (min-width: 576px) {
+//   .container {
+//     max-width: 540px;
+//   }
+// }
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+
+// Custom classes.
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: $primary-color;
+  height: $header-height;
+  position: fixed;
+  width: 100vw;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo {
+  @include titleize;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.menu-hamburger {
+  &__input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -7px;
+    cursor: pointer;
+    opacity: 0; /* hide this */
+    z-index: 2; /* and place it over the hamburger */
+    -webkit-touch-callout: none;
+    // NOTE
+    // Select all <ul> elements that are siblings and succeed the input:checked.
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/General_sibling_selectors
+    &:checked ~ ul {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+  }
+
+  &__span {
+    display: block;
+    width: $v-space;
+    height: ($v-space / 3) - 5px;
+    margin-bottom: 5px;
+    position: relative;
+    background: $secondary-color;
+    z-index: 1;
+    transform-origin: 4px 0px;
+  }
+}
+
+
+.menu {
+
+  &_mobile {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.menu-list {
+
+  &_mobile {
+    margin: 0;
+    position: fixed;
+    top: $header-height;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 96px);
+    color: $secondary-color;
+    background: $primary-color;
+    list-style-type: none;
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+    transition: transform .5s cubic-bezier(.77, .2, .05, 1);
+  }
+
+  &_desktop {
+    margin: 0;
+    padding: 0 ($v-space / 4);
+    // display: flex;
+    // justify-content: space-between;
+    text-align: right;
+  }
+}
+
+.menu-list-item {
+  @include titleize;
+
+  &_mobile {
+    font-size: 1.3em;
+    padding-bottom: ($h-space * 2);
+    list-style: none;
+    display: block;
+  }
+
+  &_desktop {
+    padding: ($h-space / 2) ($v-space / 4);
+    list-style-type: none;
+    display: inline;
+
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+.content {
+  overflow: auto;
+  background: $secondary-color;
+  color: $primary-color;
+}
+
+.hastag {
+  font-style: italic;
+
+  &:before {
+    content: '#'
+  }
+}
+
+.cats {
+  margin: $header-height 0 0 0;
+}
+
+.cats-list {
+  margin-bottom: $h-space;
+}
+
+.cats-list-item {
+  padding: 8px 0;
+
+  &__image {
+    width: 100%;
+    border-radius: 4px;
+    margin: 0 auto;
+  }
+
+  &__description {
+    font-weight: lighter;
+    text-align: left;
+  }
+
+  &__hastags {
+  }
+}
+
+.ascii-art {
+  margin: $h-space 0;
+}
+
+.footer {
+  overflow: auto;
+  padding: 0 $v-space;
+  background-color: $primary-color;
+  color: $secondary-color;
+}
+
+.footer-note {
+  font-size: 0.8em;
+}
+
+.footer-logo {
+  text-align: center;
+}
+
+/* Media queries. */
+
+/* Desktop */
+@media screen and (min-width: 992px) {
+  .menu_mobile {
+    display: none;
+  }
+
+}
+
+/* Mobile */
+@media screen and (max-width: 992px) {
+  .menu_desktop {
+    display: none;
+  }
+}

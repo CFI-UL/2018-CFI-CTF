@@ -1,0 +1,22 @@
+/* 
+  TODO: Add more style to the construction pages. 
+        Maybe background of a cat sleeping?
+*/
+
+.construction {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.construction__message {
+  font-size: 20px;
+  /* text-decoration: underline; */
+  font-weight: 100;
+}
+
+.construction__image-placeholder {
+  margin: 16px;
+}

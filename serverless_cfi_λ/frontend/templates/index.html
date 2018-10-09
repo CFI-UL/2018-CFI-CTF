@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>serverless_cfi_λ</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'w3.css') }}" />
+    <style>
+      pre {
+       white-space: pre-wrap;       /* css-3 */
+       white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+       white-space: -pre-wrap;      /* Opera 4-6 */
+       white-space: -o-pre-wrap;    /* Opera 7 */
+       word-wrap: break-word;       /* Internet Explorer 5.5+ */
+      }
+    </style>
+  </head>
+
+  <body class="w3-grey w3-content">
+    <h1>Serverless CFI λ</h1>
+
+    <h4>Your goal is to make a simple haskell program that sorts line separated words received from the standard input by the sum of the ascii value of the characters composing them, and outputs the sorted words on  the standard output</h4>
+
+    <form class="w3-container"> 
+      <label>Haskell Code:</label>
+      <textarea id="code" name="code" rows=10 class="w3-input w3-sand">-- Sample code
+main = interact id</textarea>
+      <br />
+      <button id="submit" class="w3-button w3-blue">Submit</button>
+    </form>
+
+    <br />
+
+    <div id="res" class="w3-row">
+    </div>
+
+  </body>
+
+  <script src="{{ url_for('static', filename = 'jquery.min.js') }}"></script>
+  <script>
+    $("form").submit(function(ev) {
+      $('#res').html('');
+      $.post("/", { code: $("#code").val() }, function(res) {
+        if (typeof(res) == "string") {
+          $("#res").text(res);
+        } else if (res.returncode != 0) {
+          $("#res").html($('<pre>').text(res.stdout + res.stderr));
+        } else if (! "expected" in res) {
+          $("#res").html($('<pre>').text(res.stdout + res.stderr));
+        } else {
+          $("#res").append($('<div class"w3-half w3-container">').html("<p>Input: </p>" + res.stdin));
+          $("#res").append($('<div class"w3-half w3-container">').html("<p>Expected: </p>" + res.expected));
+          $("#res").append($('<div class"w3-half w3-container">').html("<p>Got: </p>" + res.stdout));
+        }
+      }, "json");
+      ev.preventDefault();
+    });
+  </script>
+
+</html>

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  server:
+    build: .
+    ports:
+      - "23200:23200"
+    restart: "always"
+    environment:
+      - "PORT=23200"
+      - "APP_ENV=production"
